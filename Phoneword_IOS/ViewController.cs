@@ -2,20 +2,27 @@
 
 using UIKit;
 using Foundation;
+using System.Collections.Generic;
 
 namespace Phoneword_IOS
 {
 	public partial class ViewController : UIViewController
 	{
+		// translatedNumber was moved here from ViewDidLoad()
+		string translatedNumber = "";
+
+		public List<String> PhoneNumbers { get; set; }
+
 		public ViewController (IntPtr handle) : base (handle)
 		{
+			// initialize list of phone numbers called for Call History screen
+			PhoneNumbers = new List<String>();
 		}
 
-		public override void ViewDidLoad ()
+		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
-			string translatedNumber = "";
 			TranslateButton.TouchUpInside += (object sender, EventArgs e) => {
 				// Convert the phone number with text to a number
 				// using PhoneTranslator.cs
@@ -34,6 +41,9 @@ namespace Phoneword_IOS
 			};
 
 			CallButton.TouchUpInside += (object sender, EventArgs e) => {
+				// Store the phone number that we're dialing in PhoneNumbers
+				PhoneNumbers.Add(translatedNumber);
+
 				// User URL handler with tel: prefix to invoke Apple's Phone app...
 				var url = new NSUrl("tel:" + translatedNumber);
 
@@ -44,6 +54,21 @@ namespace Phoneword_IOS
 					PresentViewController (alert, true, null);
 				}
 			};
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender) {
+			base.PrepareForSegue(segue, sender);
+
+			// set the View Controller that's powering the screen we're
+			// transitioning to
+			var callHistoryController = segue.DestinationViewController as CallHistoryController;
+
+			// set the Table View Controller's list of phone numbers to the
+			// list of dialed phone numbers
+			if (callHistoryController != null) {
+				callHistoryController.PhoneNumbers = PhoneNumbers;
+			}
+
 		}
 
 		public override void DidReceiveMemoryWarning ()
