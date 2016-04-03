@@ -54,22 +54,31 @@ namespace Phoneword_IOS
 					PresentViewController (alert, true, null);
 				}
 			};
+
+			CallHistoryButton.TouchUpInside += (object sender, EventArgs e) => {
+				// Launches a new instance of CallHistoryController
+				CallHistoryController callHistory = this.Storyboard.InstantiateViewController("CallHistoryController") as CallHistoryController;
+				if (callHistory != null) {
+					callHistory.PhoneNumbers = PhoneNumbers;
+					this.NavigationController.PushViewController(callHistory, true);
+				}
+			};
 		}
 
-		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender) {
-			base.PrepareForSegue(segue, sender);
-
-			// set the View Controller that's powering the screen we're
-			// transitioning to
-			var callHistoryController = segue.DestinationViewController as CallHistoryController;
-
-			// set the Table View Controller's list of phone numbers to the
-			// list of dialed phone numbers
-			if (callHistoryController != null) {
-				callHistoryController.PhoneNumbers = PhoneNumbers;
-			}
-
-		}
+//		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender) {
+//			base.PrepareForSegue(segue, sender);
+//
+//			// set the View Controller that's powering the screen we're
+//			// transitioning to
+//			var callHistoryController = segue.DestinationViewController as CallHistoryController;
+//
+//			// set the Table View Controller's list of phone numbers to the
+//			// list of dialed phone numbers
+//			if (callHistoryController != null) {
+//				callHistoryController.PhoneNumbers = PhoneNumbers;
+//			}
+//
+//		}
 
 		public override void DidReceiveMemoryWarning ()
 		{
