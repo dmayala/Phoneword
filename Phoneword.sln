@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoneword_IOS", "Phoneword_IOS\Phoneword_IOS.csproj", "{B251A007-53A0-4290-98EA-03318EAA225E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoneword_Android", "Phoneword_Android\Phoneword_Android.csproj", "{FC19E20C-8044-4648-BF91-F218BE431494}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -19,5 +21,13 @@ Global
 		{B251A007-53A0-4290-98EA-03318EAA225E}.Release|iPhone.Build.0 = Release|iPhone
 		{B251A007-53A0-4290-98EA-03318EAA225E}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{B251A007-53A0-4290-98EA-03318EAA225E}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Release|iPhone.Build.0 = Release|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{FC19E20C-8044-4648-BF91-F218BE431494}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
